@@ -27,7 +27,7 @@ export default function ActivityRingArc(props: ActivityRingInternalProps) {
   </>;
   
   return (
-    <g mask={`url(#${maskId})`} transform={`rotate(${rotateAngle}, 50, 50)`}>
+    <g mask={`url(#${maskId})`} transform={`rotate(${rotateAngle}, 50, 50)`} >
       <defs>
         <ActivityRingArcMask {...props} maskId={maskId} />
         {linearGradient(gradientId1, color, color2, '0%', '100%')}

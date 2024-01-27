@@ -3,15 +3,41 @@ import ActivityRings from './ActivityRings/ActivityRings';
 
 export default function App() {
   const [rings, setRings] = useState([
-    { value: 2.5 },
-    { value: 0 },
-    { value: 1 },
+    { value: 0.9 },
+    { value: 0.6 },
+    { value: 0.3 },
   ]);
+
+  function change(e: React.ChangeEvent<HTMLInputElement>, index: number) {
+    const newRings = [...rings];
+    newRings[index].value = parseFloat(e.target.value);
+    setRings(newRings);
+  }
+
+  function remove(index: number) {
+    const newRings = [...rings];
+    newRings.splice(index, 1);
+    setRings(newRings);
+  }
+
+  function add() {
+    const newRings = [...rings];
+    newRings.push({ value: 0 });
+    setRings(newRings);
+  }
 
   return (
     <>
-      <ActivityRings rings={rings} />
-      <textarea value={JSON.stringify(rings)} onChange={(e) => setRings(JSON.parse(e.target.value))}></textarea> 
+      <div className="activity-rings">
+        <ActivityRings rings={rings} />
+      </div>    
+      {rings.map((ring, index) => 
+        <>
+          <button key={index} onClick={() => remove(index)}>-</button>
+          <input key={index} type="number" min="0" step="0.1" value={ring.value} onChange={e => change(e, index)} />
+        </>
+      )}
+      <button onClick={() => add()}>+</button>
     </>
   );
 }
