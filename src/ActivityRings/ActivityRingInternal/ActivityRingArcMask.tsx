@@ -6,7 +6,7 @@ export default function ActivityRingArcMask(props: ActivityRingInternalProps & {
   const isLargeArc = value > 0.5 ? 1 : 0;
 
   const backgroundMask = () =>
-    <circle cx="50" cy="50" r={arcRadius} stroke="#111" strokeWidth={arcWidth} fill="none" />;
+    <circle cx="50" cy="50" r={arcRadius} stroke="#222" strokeWidth={arcWidth} fill="none" />;
 
   const foregroundMask = () => {
     if (value >= 1)

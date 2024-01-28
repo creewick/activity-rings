@@ -17,13 +17,17 @@ function ActivityRingSpring(props: ActivityRingsProps & ActivityRingProps & { in
 
 export default function ActivityRings(props: ActivityRingsProps) {
   const width = props.width ?? 440;
+  const animated = props.animated !== false;
 
 
   return (
     <svg width={width} height={width} viewBox="0 0 100 100">
       <circle cx="50%" cy="50%" r="50%" fill="#000" />
-      { props.rings.map((ringProps, index) => 
-        <ActivityRingSpring key={index} {...props} {...ringProps} index={index} />
+      { animated && props.rings.map((ringProps, index) => 
+        <ActivityRingSpring key={index} index={index} {...props} {...ringProps} />
+      )}
+      { !animated && props.rings.map((ringProps, index) => 
+        <ActivityRing key={index} index={index} {...props} {...ringProps} />
       )}
     </svg>
   );

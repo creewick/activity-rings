@@ -4,4 +4,5 @@ export interface ActivityRingsProps {
     rings: ActivityRingProps[];
     width?: number | string;
     ringWidth?: number;
+    animated?: boolean;
 }

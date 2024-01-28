@@ -29,8 +29,10 @@ export default function ActivityRings(props: ActivityRingProps & ActivityRingsPr
     ...props, arcWidth, arcRadius, arcAngle, arcStartX, arcStartY, arcEndX, arcEndY, color, color2, color3, colorCurrent
   };
 
-  return <>
-    <ActivityRingArc {...internalProps} />
-    {props.value > 0 && <ActivityRingRounding {...internalProps} />}
-  </>;
+  return (
+    <g>
+      <ActivityRingArc {...internalProps} />
+      {props.value > 0 && <ActivityRingRounding {...internalProps} />}
+    </g>
+  );
 }
