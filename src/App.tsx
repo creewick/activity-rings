@@ -32,10 +32,10 @@ export default function App() {
         <ActivityRings rings={rings} />
       </div>    
       {rings.map((ring, index) => 
-        <>
-          <button key={index} onClick={() => remove(index)}>-</button>
-          <input key={index} type="number" min="0" step="0.1" value={ring.value} onChange={e => change(e, index)} />
-        </>
+        <span key={index} >
+          <button onClick={() => remove(index)}>-</button>
+          <input type="number" min="0" step="0.1" value={ring.value} onChange={e => change(e, index)} />
+        </span>
       )}
       <button onClick={() => add()}>+</button>
     </>
